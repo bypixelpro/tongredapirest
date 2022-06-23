@@ -1,7 +1,8 @@
 import express, { urlencoded, json } from 'express';
-const app = express();
 import cors from 'cors';
 import routes from './src/routes/routes.js';
+
+const app = express();
 
 //Configuraciones
 app.set('port', process.env.PORT || 3000);
@@ -18,5 +19,5 @@ routes(app);
 
 //Iniciando el servidor
 app.listen(app.get('port'),()=>{
-    console.log(`Server listening on port ${app.get('port')}`);
+    console.log(`Servidor activo en puerto: ${app.get('port')}`);
 });
