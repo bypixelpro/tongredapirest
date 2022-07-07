@@ -15,10 +15,19 @@ const routes = (app) => {
         })
     //Meta
         app.get('/meta/:codvend', async(req, res) => {   
-            const dbfFile = '/METACT.dbf';
+            const dbfFile = '/META.dbf';
             const codVend = req.params.codvend;
             endpointData(codVend, res, dbfFile);
         })
+
+     //Productos
+     app.get('/productos/todos', async(req, res) => {   
+        const dbfFile = '/A_ALM.DBF';
+        const dir = './src/dbfs/';
+        let dbf = await DBFFile.open(dir + dbfFile);
+        let records = await dbf.readRecords(100000);
+        res.json(records);
+    })   
 }
 
 //Método genérico
